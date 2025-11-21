@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 40px 20px;
+        background: #ffe4f2;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    h4 {
+        color: #ff7fb3;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        color: #ff4f8a;
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .img-circle {
+        width: 230px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 60%;
+        border: 4px solid #ffb3c6;
+        padding: 10px;
+        background: #ffe6ed;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #ff4f8a;
+        font-size: 26px;
+        margin: 10px 0;
+    }
+
+    .date {
+        margin-top: 5px;
+        font-size: 15px;
+        color: #444;
+    }
+
+    .music {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #ff4f8a;
+        cursor: pointer;
+        z-index: 10;
+        position: relative;
+    }
+
+    .special-btn {
+        display: inline-block;
+        margin-top: 25px;
+        background: #ff4f8a;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0,0,0,.2);
+        transition: 0.25s;
+    }
+
+    .special-btn:hover {
+        background: #ff2d6f;
+        transform: scale(1.06);
+    }
+
+    .heart {
+        position: fixed;
+        top: -20px;
+        color: #ff6fa8;
+        font-size: 20px;
+        pointer-events: none;
+        animation: fall linear forwards;
+        opacity: 0.9;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+            opacity: 0;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<h4>Untuk yang tersayang</h4>
+<h1>Runie</h1>
+
+<video class="img-circle" autoplay loop muted playsinline>
+    <source src="ultah.mp4" type="video/mp4">
+</video>
+
+<h2>Selamat Ulang Tahun Sayang!</h2>
+
+<div class="date">🎉 27 Desember 2025 🎉</div>
+
+<div class="music" onclick="toggleMusic()">
+    ❤️ Musik ON
+</div>
+
+<a href="special.html" class="special-btn">Pesan Spesial ✨</a>
+
+<audio id="song" loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    let play = true;
+    const song = document.getElementById("song");
+
+    function toggleMusic() {
+        if (play) {
+            song.pause();
+            document.querySelector(".music").innerText = "💗 Musik OFF";
+        } else {
+            song.play();
+            document.querySelector(".music").innerText = "❤️ Musik ON";
+        }
+        play = !play;
+    }
+
+    song.play();
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>

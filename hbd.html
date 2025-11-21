@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #ffe4f2;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .heart {
+        font-size: 48px;
+        color: #ff5c8a;
+        animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    .bar {
+        width: 60px;
+        height: 3px;
+        background: #ff5c8a;
+        border-radius: 4px;
+        margin-top: 12px;
+        animation: load 1.6s infinite;
+    }
+
+    @keyframes load {
+        0% { width: 20px; opacity: 0.4; }
+        50% { width: 60px; opacity: 1; }
+        100% { width: 20px; opacity: 0.4; }
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="heart">❤️</div>
+    <div class="bar"></div>
+
+<script>
+    // otomatis pindah setelah 2.8 detik
+    setTimeout(() => {
+        window.location.href = "birthday.html"; // pastikan nama file utamanya benar
+    }, 2000);
+</script>
+
+</body>
+</html>

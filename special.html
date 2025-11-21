@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan Spesial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 40px 20px;
+        background: #fff7fb;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-family: "Sacramento", cursive;
+        font-size: 50px;
+        color: #ff4f8a;
+        margin-bottom: 10px;
+    }
+
+    .poem-box {
+        background: #ffe6ef;
+        border-radius: 20px;
+        padding: 25px;
+        margin-top: 20px;
+        font-size: 17px;
+        color: #444;
+        line-height: 1.7;
+        box-shadow: 0 4px 15px rgba(255, 153, 188, 0.3);
+    }
+
+    /* tombol next */
+    .next-btn {
+        display: inline-block;
+        margin-top: 30px;
+        background: #ff4f8a;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .next-btn:hover {
+        background: #ff2d6f;
+    }
+
+    /* love animation */
+    .heart {
+        position: fixed;
+        top: -20px;
+        color: #ff6fa8;
+        font-size: 20px;
+        pointer-events: none;
+        animation: fall linear forwards;
+        opacity: 0.9;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>Pesan Spesial Untukmu</h1>
+
+<div class="poem-box">
+    Di antara ribuan detik yang jatuh,<br>
+    aku memilih satu yang paling indah,<br>
+    detik ketika kamu hadir dalam hidupku.<br><br>
+
+    Kamu itu seperti senja,<br>
+    selalu datang dengan warna yang menenangkan,<br>
+    tapi diam-diam meninggalkan rindu yang panjang.<br><br>
+
+    Jika bahagia punya wujud,<br>
+    mungkin ia menyerupai caramu tersenyum.<br><br>
+
+    Dan jika doa bisa berbicara,<br>
+    ia akan menyebut namamu paling dulu,<br>
+    setiap malam, sebelum aku memejam.<br><br>
+
+    Terima kasih sudah ada,<br>
+    untuk dunia sekecil ini,<br>
+    kamu adalah seluruhnya.<br><br>
+    
+    From: Fabian
+</div>
+
+<a href="hbd.html" class="next-btn">Kembali ke Awal</a>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>
