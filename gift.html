@@ -6,6 +6,19 @@
 <title>Birthday</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <iframe src="player.html" style="display:none;" id="musicframe"></iframe>
+
+<script>
+    // Mencegah iframe reload saat pindah halaman
+    if (!sessionStorage.getItem("musicLoaded")) {
+        document.getElementById("musicframe").src = "player.html";
+        sessionStorage.setItem("musicLoaded", "true");
+    } else {
+        // Kalau sudah pernah dimuat, nonaktifkan reload
+        document.getElementById("musicframe").src = "";
+    }
+</script>
+
 
 <style>
     body {
@@ -151,9 +164,10 @@
 
     setInterval(createHeart, 350);
 </script>
-    <script src="music.js"></script>
+   
 
 
 </body>
 </html>
+
 
