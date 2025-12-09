@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body style="margin:0; padding:0; overflow:hidden;">
+
+<audio id="bgm" autoplay loop>
+    <source src="monolog.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const audio = document.getElementById("bgm");
+
+    // pastikan autoplay aman setelah interaksi user
+    document.addEventListener("click", () => {
+        audio.play().catch(()=>{});
+    });
+</script>
+
+</body>
+</html>
