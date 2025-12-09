@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+
+<style>
+    body {
+        margin: 0; padding: 0;
+        font-family: Arial, sans-serif;
+        background: #ffb6c1;
+        overflow-x: hidden;
+        transition: background 0.5s ease;
+    }
+
+    .page {
+        display: none;
+        padding: 30px;
+        text-align: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+
+    .active { display: block; }
+
+    h1 { font-size: 40px; margin-bottom: 20px; }
+    p { font-size: 20px; }
+
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: #fff;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    button:hover { background: #f1f1f1; }
+</style>
+</head>
+<body>
+
+<!-- ======== AUDIO (berjalan terus, tidak restart) ========= -->
+<audio id="bgm" src="monolog.mp3" autoplay loop></audio>
+
+<!-- ================= PAGE 1: HBD ================= -->
+<div class="page active" id="hbd">
+    <h1>Happy Birthday!</h1>
+    <p>Hari spesial buat kamu dimulai dari sini ✨</p>
+    <button onclick="goTo('birthday')">Lanjut ›</button>
+</div>
+
+<!-- ================= PAGE 2: Birthday ================= -->
+<div class="page" id="birthday">
+    <h1>🎉 Selamat Ulang Tahun 🎉</h1>
+    <p>Ada sesuatu yang sudah aku siapin buat kamu.</p>
+    <button onclick="goTo('gift')">Lihat Hadiah ›</button>
+</div>
+
+<!-- ================= PAGE 3: Gift ================= -->
+<div class="page" id="gift">
+    <h1>🎁 Ini Hadiah Kecil Buat Kamu</h1>
+    <p>Bukan bunganya, tapi niatnya yang tulus hehe.</p>
+    <button onclick="goTo('special')">Lanjut ›</button>
+</div>
+
+<!-- ================= PAGE 4: Special ================= -->
+<div class="page" id="special">
+    <h1>💗 Spesial Buat Kamu</h1>
+    <p>Semoga harimu penuh cahaya, tawa, dan keberkahan.</p>
+    <button onclick="goTo('hbd')">Kembali ke Awal</button>
+</div>
+
+<script>
+/* ======== SISTEM NAVIGASI HALAMAN TANPA RELOAD ======== */
+function goTo(pageId) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+}
+
+/* ======== AUTOPLAY FIX (agar musik langsung jalan) ======== */
+const audio = document.getElementById("bgm");
+audio.volume = 0.7;
+
+// jika browser menolak autoplay, paksa jalankan setelah 200ms
+setTimeout(() => {
+    audio.play().catch(()=>{});
+}, 200);
+</script>
+
+</body>
+</html>
