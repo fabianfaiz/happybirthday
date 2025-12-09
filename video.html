@@ -10,97 +10,57 @@
 <style>
     body {
         margin: 0;
-        padding: 30px 15px;
-        background: #ffe4f2;
+        padding: 0;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
         font-family: "Poppins", sans-serif;
-        text-align: center;
-        overflow-x: hidden;
-    }
-
-    h1 {
-        color: #ff4f8a;
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .video-box {
-        width: 100%;
-        max-width: 340px;
-        border-radius: 20px;
         overflow: hidden;
-        margin: 0 auto;
-        box-shadow: 0 6px 18px rgba(0,0,0,.2);
     }
 
     video {
         width: 100%;
-        height: auto;
-        border-radius: 20px;
+        height: 100%;
+        object-fit: cover;
     }
 
     .back-btn {
-        display: inline-block;
-        margin-top: 25px;
-        background: #ff4f8a;
-        color: #fff;
-        padding: 12px 25px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: 600;
-        box-shadow: 0 4px 12px rgba(0,0,0,.2);
-        transition: 0.25s;
-    }
-
-    .back-btn:hover {
-        background: #ff2d6f;
-        transform: scale(1.06);
-    }
-
-    .heart {
         position: fixed;
-        top: -20px;
-        color: #ff6fa8;
-        font-size: 20px;
-        pointer-events: none;
-        animation: fall linear forwards;
-        opacity: 0.9;
-    }
-
-    @keyframes fall {
-        to {
-            transform: translateY(110vh);
-            opacity: 0;
-        }
+        bottom: 25px;
+        right: 25px;
+        background: rgba(255, 77, 138, 0.9);
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 15px;
+        backdrop-filter: blur(4px);
     }
 </style>
-
 </head>
 <body>
 
-<h1>Untukmu ❤️</h1>
+<video autoplay controls playsinline>
+    <source src="video.mp4" type="video/mp4">
+</video>
 
-<div class="video-box">
-    <video controls>
-        <source src="video.mp4" type="video/mp4">
-    </video>
-</div>
+<!-- AUDIO yang diputar otomatis -->
+<audio id="bgm" autoplay>
+    <source src="monolog.mp3" type="audio/mpeg">
+</audio>
 
-<a href="gift.html" class="back-btn">Kembali 🎀</a>
+<a href="gift.html" class="back-btn">Kembali</a>
 
 <script>
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }
+    // beberapa browser butuh sedikit trigger
+    const bgm = document.getElementById("bgm");
+    bgm.volume = 0.5; 
 
-    setInterval(createHeart, 350);
+    document.addEventListener("click", () => {
+        bgm.play();
+    });
 </script>
 
 </body>
