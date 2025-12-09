@@ -1,15 +1,35 @@
-// --- Global Music Player ---
+// file: music.js
 
-// Cek apakah musik sudah dibuat
-if (!window.globalMusic) {
-    window.globalMusic = new Audio("monolog.mp3");
-    window.globalMusic.loop = true;
-    window.globalMusic.volume = 1.0;
-}
+let audio;
 
-// Autoplay setelah user berinteraksi
+// Jika sudah ada data di sessionStorage, baca
+const savedTime = sessionStorage.getItem("music_time");
+const savedPlay = sessionStorage.getItem("music_playing");
+
 function startMusic() {
-    window.globalMusic.play().catch(() => {});
+    if (!audio) {
+        audio = new Audio("monolog.mp3");
+        audio.loop = true;
+
+        // jika ada waktu tersimpan → lanjut
+        if (savedTime) audio.currentTime = parseFloat(savedTime);
+
+        // jika sebelumnya sedang play → lanjut play
+        if (savedPlay === "true") {
+            audio.play();
+        } else if (!savedPlay) {
+            // halaman pertama → auto play
+            audio.play();
+        }
+    }
 }
 
-document.addEventListener("click", startMusic, { once: true });
+// Simpan waktu musik setiap 500 ms
+setInterval(() => {
+    if (audio) {
+        sessionStorage.setItem("music_time", audio.currentTime);
+        sessionStorage.setItem("music_playing", !audio.paused);
+    }
+}, 500);
+
+startMusic();
