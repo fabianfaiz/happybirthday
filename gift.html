@@ -6,9 +6,7 @@
 <title>Birthday</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <iframe src="player.html" style="display:none;" id="musicframe"></iframe>
 
-<script src="music.js"></script>
 
 
 
@@ -128,18 +126,6 @@
     let play = true;
     const song = document.getElementById("song");
 
-    function toggleMusic() {
-        if (play) {
-            song.pause();
-            document.querySelector(".music").innerText = "💗 Musik OFF";
-        } else {
-            song.play();
-            document.querySelector(".music").innerText = "❤️ Musik ON";
-        }
-        play = !play;
-    }
-
-    song.play();
 
     function createHeart() {
         const heart = document.createElement("div");
@@ -162,6 +148,7 @@
 
 </body>
 </html>
+
 
 
 
